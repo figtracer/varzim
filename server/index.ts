@@ -43,7 +43,7 @@ const sqliteKv = Kv.from({
 const keyManager = Handler.keyManager({
   kv: sqliteKv,
   path: '/keys',
-  rp: 'localhost',
+  rp: process.env.RAILWAY_PUBLIC_DOMAIN ? 'varzim.figtracer.com' : 'localhost',
 })
 
 app.all('/keys/*', (c) => keyManager.fetch(c.req.raw))
