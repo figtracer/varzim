@@ -211,13 +211,12 @@ app.post('/api/scan', async (c) => {
     }
   })
 
-  // Persist query
-  const payerAddress = (response as any).receipt?.source || 'unknown'
-  const txHash = (response as any).receipt?.txHash || ''
+  // Persist query — mppx receipt has `reference` (tx hash), not `txHash`
+  const txHash = (response as any).reference || ''
   db.prepare(`
     INSERT INTO queries (contract_address, event_signature, from_block, to_block, result_count, payer_address, tx_hash, cost_usd)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `).run(contract_address, event_abi, from_block, to_block, decoded.length, payerAddress, txHash, cost.toString())
+  `).run(contract_address, event_abi, from_block, to_block, decoded.length, 'unknown', txHash, cost.toString())
 
   return (response as any).withReceipt(Response.json({
     events: decoded,
@@ -256,13 +255,12 @@ app.post('/api/watch', async (c) => {
       expiresAt,
     })
 
-    // Persist the watch as a query
-    const payerAddress = (response as any).receipt?.source || 'unknown'
-    const txHash = (response as any).receipt?.txHash || ''
+    // Persist the watch as a query — mppx receipt has `reference` (tx hash)
+    const txHash = (response as any).reference || ''
     db.prepare(`
       INSERT INTO queries (contract_address, event_signature, from_block, to_block, result_count, payer_address, tx_hash, cost_usd)
       VALUES (?, ?, 0, 0, 0, ?, ?, ?)
-    `).run(contract_address, `[watch] ${event_abi}`, payerAddress, txHash, WATCH_COST_PER_HOUR.toString())
+    `).run(contract_address, `[watch] ${event_abi}`, 'unknown', txHash, WATCH_COST_PER_HOUR.toString())
 
     // Return the watch ID so the client can connect to the SSE stream
     return (response as any).withReceipt(Response.json({
