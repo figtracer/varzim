@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.8.0",
+    "hono": "^4.12.8",
+    "mppx": "^0.4.7",
+    "tempo.ts": "^0.14.2",
+    "viem": "^2.47.5"
+  }
+}
