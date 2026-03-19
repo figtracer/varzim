@@ -5,6 +5,7 @@ import { ScanForm } from './components/ScanForm'
 import { Results } from './components/Results'
 import { LiveFeed } from './components/LiveFeed'
 import { QueryHistory } from './components/QueryHistory'
+import { CliSection } from './components/CliSection'
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:3002'
 
@@ -156,6 +157,7 @@ export default function App() {
       )}
       {results && <Results data={results} query={lastQuery} />}
       {isConnected && <QueryHistory address={address} api={API} />}
+      <CliSection />
     </div>
   )
 }
