@@ -42,9 +42,7 @@ export function CliSection() {
               <span className="cli-badge">no wallet setup needed</span>
             </div>
             <p className="cli-desc">
-              use your existing tempo wallet from the terminal. works with any agent or script.
-              <br />
-              or just ask your ai agent: <span className="cli-agent-quote">"watch WETH Transfer events for an hour"</span>
+              use your existing tempo wallet from the terminal — copy the commands below, or point your agent at the api.
             </p>
 
             <div className="cli-tabs">
