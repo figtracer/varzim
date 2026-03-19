@@ -3,6 +3,9 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "start": "bun run index.ts"
+  },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/bun": "latest"
