@@ -132,6 +132,29 @@ body {
 }
 .disconnect-btn:hover { color: var(--text-primary); }
 .wallet-pending { color: var(--text-tertiary); font-size: 12px; }
+.connect-btn-cross {
+  background: transparent;
+  color: var(--accent-indigo);
+  border-color: var(--accent-indigo);
+}
+.connect-btn-cross:hover {
+  background: var(--accent-indigo);
+  color: #fff;
+  border-color: var(--accent-indigo);
+}
+.wallet-dot-cross {
+  background: var(--accent-indigo);
+}
+.cross-domain-badge {
+  font-size: 10px;
+  color: var(--accent-indigo);
+  border: 1px solid var(--accent-indigo);
+  border-radius: 3px;
+  padding: 1px 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
 .wallet-error-toast {
   position: absolute;
   top: calc(100% + 8px);
