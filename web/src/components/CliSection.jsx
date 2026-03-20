@@ -3,12 +3,8 @@ import { useState } from 'react'
 const API = import.meta.env.VITE_API_URL || 'http://localhost:3002'
 
 const EXAMPLES = {
-  watch: `tempo request -X POST \\
-  --json '{"contract_address":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2","event_abi":"event Transfer(address indexed src, address indexed dst, uint256 wad)"}' \\
-  ${API}/api/watch`,
-  scan: `tempo request -X POST \\
-  --json '{"contract_address":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2","event_abi":"event Transfer(address indexed src, address indexed dst, uint256 wad)","from_block":24690000,"to_block":24690100}' \\
-  ${API}/api/scan`,
+  watch: `tempo request -X POST --json '{"contract_address":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2","event_abi":"event Transfer(address indexed src, address indexed dst, uint256 wad)"}' "${API}/api/watch"`,
+  scan: `tempo request -X POST --json '{"contract_address":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2","event_abi":"event Transfer(address indexed src, address indexed dst, uint256 wad)","from_block":24690000,"to_block":24690100}' "${API}/api/scan"`,
   stream: `curl -sN "${API}/api/watch/<watch_id>/stream?event_abi=event+Transfer(...)&contract_address=0xC02..."`,
 }
 
